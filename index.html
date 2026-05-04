@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indu Technosavys LLP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --warm-white: #FFFFFF;
+      --ink: #1A1A2E;
+      --ink-light: #2D2D44;
+      --drama: #C84B31;
+      --drama-deep: #8B2015;
+      --gold: #D4A853;
+      --sage: #6B8F71;
+      --mist: #E8E4DC;
+      --shadow: rgba(26, 26, 46, 0.08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 5%;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--mist);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--drama);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--ink-light);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--drama);
+    }
+
+    .nav-cta {
+      background: var(--drama);
+      color: #fff;
+      padding: 7px 18px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--drama-deep);
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    @media(max-width:768px) {
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      gap: 40px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(200, 75, 49, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mist);
+      border: 1px solid rgba(212, 168, 83, 0.4);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .hero-badge::before {
+      content: '●';
+      font-size: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--drama);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 440px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+      padding: 11px 24px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--drama);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      padding: 11px 24px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--mist);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .hero-card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .hero-card-sub {
+      font-size: 0.78rem;
+      color: #777;
+      margin-top: 2px;
+    }
+
+    .hero-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .accent-line {
+      width: 40px;
+      height: 3px;
+      background: var(--drama);
+      border-radius: 2px;
+      margin-bottom: 14px;
+    }
+
+    @media(max-width:768px) {
+      #hero {
+        grid-template-columns: 1fr;
+        padding-top: 90px;
+      }
+
+      .hero-right {
+        display: none;
+      }
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 60px 5%;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--drama);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #555;
+      max-width: 600px;
+    }
+
+    /* ─── DARK DRAMA BAND ─── */
+    .dark-band {
+      background: var(--ink);
+      color: #fff;
+      padding: 50px 5%;
+    }
+
+    .dark-band .section-title {
+      color: #fff;
+    }
+
+    .dark-band .section-body {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .dark-band .section-label {
+      color: var(--gold);
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--mist);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 18px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 12px var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px var(--shadow);
+    }
+
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .service-desc {
+      font-size: 0.78rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ─── NABL BAND ─── */
+    #nabl {
+      background: linear-gradient(135deg, var(--drama) 0%, var(--drama-deep) 100%);
+      color: #fff;
+      padding: 50px 5%;
+    }
+
+    #nabl .section-label {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    #nabl .section-title {
+      color: #fff;
+    }
+
+    .nabl-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .nabl-point {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .nabl-point-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .nabl-point-text {
+      font-size: 0.83rem;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.55;
+    }
+
+    /* ─── VIDEO ─── */
+    #work {
+      background: var(--cream);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 30px var(--shadow);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    }
+
+    .video-wrapper:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(26, 26, 46, 0.15);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: var(--drama);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .video-wrapper:hover .play-btn {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: var(--drama-deep);
+    }
+
+    /* ─── VIDEO POPUP ─── */
+    .video-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 46, 0.95);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 5%;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+    }
+
+    .video-popup-content {
+      width: 100%;
+      max-width: 1000px;
+      position: relative;
+      transform: scale(0.9);
+      opacity: 0;
+    }
+
+    .video-popup-content video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      background: #000;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .close-popup:hover {
+      background: var(--drama);
+    }
+
+    @media(max-width:768px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .close-popup {
+        top: -45px;
+        right: 10px;
+      }
+    }
+
+    /* ─── GALLERY ─── */
+    #gallery {
+      background: var(--mist);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    @media(max-width:600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ─── LAB PRACTICES ─── */
+    #lab {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    #lab .section-title {
+      color: #fff;
+    }
+
+    #lab .section-label {
+      color: var(--gold);
+    }
+
+    #lab .section-body {
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 700px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--cream);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 28px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .contact-item-val {
+      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      border: 1.5px solid var(--mist);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--ink);
+      outline: none;
+      transition: border 0.2s;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--drama);
+    }
+
+    .contact-form textarea {
+      min-height: 90px;
+    }
+
+    .contact-form button {
+      background: var(--drama);
+      color: #fff;
+      padding: 11px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: var(--drama-deep);
+    }
+
+    @media(max-width:680px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.45);
+      text-align: center;
+      padding: 22px 5%;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    footer strong {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: var(--mist);
+      margin: 0 5%;
+    }
+
+    /* ─── ABOUT SPLIT ─── */
+    #about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .about-detail {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid var(--mist);
+    }
+
+    .about-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--mist);
+    }
+
+    .about-detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .about-detail-key {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #999;
+    }
+
+    .about-detail-val {
+      font-size: 0.85rem;
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    @media(max-width:680px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* scroll fade - no CSS opacity, GSAP handles it */
+    .reveal {}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">Indu <span>Technosavys</span> LLP</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#nabl">NABL</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Est. 2025 · Nashik, Maharashtra</div>
+      <h1 class="hero-title">We End<br>Your <em>Quest.</em></h1>
+      <p class="hero-sub">A service provider company delivering expert agricultural guidance, lab analysis support,
+        legal assistance, and NABL accreditation services.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-label">Identification</div>
+        <div class="hero-card-val">ACK-7356</div>
+        <div class="hero-card-sub">LLP Registration No.</div>
+      </div>
+      <div class="hero-cards-row">
+        <div class="hero-card">
+          <div class="hero-card-label">GST</div>
+          <div class="hero-card-val" style="font-size:1rem;">27AALFI1136Q1ZX</div>
+          <div class="hero-card-sub">Verified</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Services</div>
+          <div class="hero-card-val">6+</div>
+          <div class="hero-card-sub">Core offerings</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-label">Specialisation</div>
+        <div class="hero-card-val" style="font-size:1.1rem;">NABL Accreditation</div>
+        <div class="hero-card-sub">Complete guidance & documentation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="section-label">Who We Are</div>
+    <div class="about-grid">
+      <div>
+        <div class="accent-line"></div>
+        <h2 class="section-title">Company Profile</h2>
+        <p class="section-body">Indu Technosavys LLP is a dedicated service provider company formed in 2025, based in
+          Nashik, Maharashtra. We support agricultural enterprises, laboratories, and businesses with expert guidance
+          across our specialised domains.</p>
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-row">
+          <span class="about-detail-key">Company Type</span>
+          <span class="about-detail-val">LLP</span>
+        </div>
+        <div class="about-detail-row">
+          <span class="about-detail-key">Founded</span>
+          <span class="about-detail-val">2025</span>
+        </div>
+        <div class="about-detail-row">
+          <span class="about-detail-key">LLP ID</span>
+          <span class="about-detail-val">ACK-7356</span>
+        </div>
+        <div class="about-detail-row">
+          <span class="about-detail-key">GST No.</span>
+          <span class="about-detail-val">27AALFI1136Q1ZX</span>
+        </div>
+        <div class="about-detail-row">
+          <span class="about-detail-key">Location</span>
+          <span class="about-detail-val">Nashik 422009, M.S.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section id="services" class="reveal">
+    <div class="section-label">What We Offer</div>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-body">From agricultural inputs to legal and laboratory support — we cover the full spectrum.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🌱</div>
+        <div class="service-name">Fertilizers Guidance</div>
+        <div class="service-desc">Expert advice on fertilizer selection, application, and soil compatibility.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌾</div>
+        <div class="service-name">Seeds & Pesticides</div>
+        <div class="service-desc">Guidance on suitable seed varieties and safe pesticide use.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧪</div>
+        <div class="service-name">Bio-stimulants Setup</div>
+        <div class="service-desc">Complete setup and implementation of bio-stimulant programs.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-name">Record Keeping</div>
+        <div class="service-desc">Systematic documentation and record maintenance services.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚖️</div>
+        <div class="service-name">Legal Support</div>
+        <div class="service-desc">Assistance with regulatory compliance and legal documentation.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧫</div>
+        <div class="service-name">Lab Analysis Support</div>
+        <div class="service-desc">Technical support for laboratory analysis and testing procedures.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NABL BAND -->
+  <section id="nabl" class="reveal">
+    <div class="section-label">Accreditation</div>
+    <div class="accent-line" style="background:#fff; opacity:0.4;"></div>
+    <h2 class="section-title">NABL Accreditation</h2>
+    <p style="font-size:0.95rem; line-height:1.75; color:rgba(255,255,255,0.75); max-width:550px; margin-bottom:0;">We
+      provide end-to-end guidance for laboratory accreditation under NABL standards, ensuring your facility meets every
+      benchmark.</p>
+    <div class="nabl-points">
+      <div class="nabl-point">
+        <div class="nabl-point-icon">📁</div>
+        <div class="nabl-point-text">Prepare all required files, reports, and documentation</div>
+      </div>
+      <div class="nabl-point">
+        <div class="nabl-point-icon">🌐</div>
+        <div class="nabl-point-text">Upload and manage submissions on the NABL portal</div>
+      </div>
+      <div class="nabl-point">
+        <div class="nabl-point-icon">✔️</div>
+        <div class="nabl-point-text">Maintain and renew accreditation standards long-term</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR WORK / VIDEO -->
+  <section id="work" class="reveal">
+    <div class="section-label">In Action</div>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Our Work</h2>
+    <p class="section-body">Watch how we deliver results for our clients across agricultural and lab domains.</p>
+    <div class="video-grid">
+      <div class="video-wrapper" onclick="openVideo('assets/video1.mp4')">
+        <video muted playsinline>
+          <source src="assets/video1.mp4" type="video/mp4">
+        </video>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-wrapper" onclick="openVideo('assets/video2.mp4')">
+        <video muted playsinline>
+          <source src="assets/video2.mp4" type="video/mp4">
+        </video>
+        <div class="play-btn">▶</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="reveal">
+    <div class="section-label">Visual Portfolio</div>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="assets/image1.jpg" alt="Gallery 1">
+      <img src="assets/image2.jpg" alt="Gallery 2">
+      <img src="assets/image3.jpg" alt="Gallery 3">
+      <img src="assets/image4.jpg" alt="Gallery 4">
+      <img src="assets/image5.jpg" alt="Gallery 5">
+      <img src="assets/image6.jpg" alt="Gallery 6">
+    </div>
+  </section>
+
+  <!-- GOOD LAB PRACTICES -->
+  <section id="lab" class="reveal">
+    <div class="section-label">Training & Standards</div>
+    <div class="accent-line" style="background:var(--gold);"></div>
+    <h2 class="section-title">Good Lab Practices</h2>
+    <p class="section-body">A laboratory that adheres to Good Lab Practices consistently delivers the highest quality
+      analysis and reliable results. We provide structured GLP training tailored to your company's requirements —
+      ensuring your team operates at the highest professional standard.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+    <div class="section-label">Reach Out</div>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-val">04/ Sadashiv Villa, Sadashiv Nagar,<br>Nashik 422009, Maharashtra</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val"><a href="tel:+917498151167" style="color:inherit;text-decoration:none;">+91
+                74981 51167</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val"><a href="mailto:indutechnosavys@gmail.com"
+                style="color:var(--drama);text-decoration:none;">indutechnosavys@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Working Hours</div>
+            <div class="contact-item-val">Mon – Sat, 9:00 AM – 6:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Email Address">
+        <input type="tel" placeholder="Phone Number">
+        <textarea placeholder="Your Message / Query"></textarea>
+        <button type="submit">Send Message →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>Indu Technosavys LLP</strong> · LLP ID: ACK-7356 · GST: 27AALFI1136Q1ZX<br>
+    <span style="margin-top:6px;display:inline-block;">© 2025 All Rights Reserved · We End Your Quest!</span>
+  </footer>
+
+  <script>
+    // ── Safe GSAP init ──────────────────────────────────────────────
+    // All content is visible by default. GSAP adds entrance animations
+    // on top — if ScrollTrigger fails (local file / CDN blocked), the
+    // page still shows everything normally.
+
+    function initAnimations() {
+      try {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero: set initial hidden state THEN animate in
+        gsap.set(".hero-left > *", { opacity: 0, y: 40 });
+        gsap.to(".hero-left > *", {
+          opacity: 1, y: 0, duration: 0.9,
+          stagger: 0.18, ease: "power3.out", delay: 0.2
+        });
+
+        gsap.set(".hero-right > *", { opacity: 0, x: 30 });
+        gsap.to(".hero-right > *", {
+          opacity: 1, x: 0, duration: 0.9,
+          stagger: 0.15, ease: "power3.out", delay: 0.4
+        });
+
+        // Scroll reveals – use fromTo so start state is explicit
+        gsap.utils.toArray(".reveal").forEach(el => {
+          gsap.fromTo(el,
+            { opacity: 0, y: 36 },
+            {
+              opacity: 1, y: 0, duration: 0.75, ease: "power2.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 88%",
+                once: true
+              }
+            }
+          );
+        });
+
+        // Service cards stagger
+        gsap.utils.toArray(".service-card").forEach((card, i) => {
+          gsap.fromTo(card,
+            { opacity: 0, y: 22 },
+            {
+              opacity: 1, y: 0, duration: 0.55,
+              delay: i * 0.07, ease: "power2.out",
+              scrollTrigger: { trigger: card, start: "top 92%", once: true }
+            }
+          );
+        });
+
+        // NABL points
+        gsap.utils.toArray(".nabl-point").forEach((p, i) => {
+          gsap.fromTo(p,
+            { opacity: 0, x: -18 },
+            {
+              opacity: 1, x: 0, duration: 0.55,
+              delay: i * 0.1, ease: "power2.out",
+              scrollTrigger: { trigger: p, start: "top 92%", once: true }
+            }
+          );
+        });
+
+        ScrollTrigger.refresh();
+
+      } catch (e) {
+        // If GSAP fails for any reason, make everything fully visible
+        document.querySelectorAll('.reveal, .hero-left > *, .hero-right > *, .service-card, .nabl-point')
+          .forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      }
+    }
+
+    // Run after DOM + scripts are ready
+    if (document.readyState === 'complete') {
+      initAnimations();
+    } else {
+      window.addEventListener('load', initAnimations);
+    }
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.boxShadow =
+        window.scrollY > 40 ? '0 2px 20px rgba(0,0,0,0.1)' : 'none';
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      const cta = document.querySelector('.nav-cta');
+      const isOpen = links.getAttribute('data-open') === '1';
+      if (isOpen) {
+        links.removeAttribute('style');
+        links.removeAttribute('data-open');
+        if (cta) cta.style.display = '';
+      } else {
+        links.setAttribute('data-open', '1');
+        links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:54px;left:0;right:0;background:#FAF7F2;padding:16px 5%;gap:14px;border-bottom:1px solid #E8E4DC;z-index:99;box-shadow:0 8px 24px rgba(0,0,0,0.06);';
+        if (cta) { cta.style.display = 'block'; cta.style.width = 'fit-content'; }
+      }
+    }
+
+    // Close mobile menu when a nav link is clicked
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        const links = document.querySelector('.nav-links');
+        links.removeAttribute('style');
+        links.removeAttribute('data-open');
+      });
+    });
+    // ── Video Popup Logic ──────────────────────────────────────────
+    function openVideo(src) {
+      const popup = document.getElementById('videoPopup');
+      const video = document.getElementById('popupVideo');
+      const content = popup.querySelector('.video-popup-content');
+
+      video.src = src;
+      popup.style.display = 'flex';
+
+      gsap.to(popup, { opacity: 1, duration: 0.3 });
+      gsap.to(content, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+
+      video.play();
+    }
+
+    function closeVideo() {
+      const popup = document.getElementById('videoPopup');
+      const video = document.getElementById('popupVideo');
+      const content = popup.querySelector('.video-popup-content');
+
+      gsap.to(content, { opacity: 0, scale: 0.9, duration: 0.3, ease: "power2.in" });
+      gsap.to(popup, {
+        opacity: 0,
+        duration: 0.3,
+        onComplete: () => {
+          popup.style.display = 'none';
+          video.pause();
+          video.src = "";
+        }
+      });
+    }
+  </script>
+
+  <!-- VIDEO POPUP MODAL -->
+  <div class="video-popup" id="videoPopup" onclick="closeVideo()">
+    <div class="video-popup-content" onclick="event.stopPropagation()">
+      <div class="close-popup" onclick="closeVideo()">×</div>
+      <video id="popupVideo" controls playsinline>
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+</body>
+
+</html>

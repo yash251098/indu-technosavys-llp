@@ -42,9 +42,15 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
+      background-color: #ffffff;
+      background-image:
+        linear-gradient(rgba(14, 165, 233, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.2) 1px, transparent 1px);
+      background-size: 50px 50px;
+      background-attachment: fixed;
       color: var(--ink);
       overflow-x: hidden;
+      position: relative;
     }
 
     /* ─── NAV ─── */
@@ -58,7 +64,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 5%;
-      background: rgba(250, 247, 242, 0.92);
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--mist);
     }
@@ -157,7 +163,7 @@
       align-items: center;
       padding: 100px 5% 60px;
       gap: 40px;
-      background: var(--cream);
+      background: transparent;
       position: relative;
       overflow: hidden;
     }
@@ -166,7 +172,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(200, 75, 49, 0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -260,10 +266,11 @@
     }
 
     .hero-card {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
       border-radius: 12px;
       padding: 18px 20px;
-      border: 1px solid var(--mist);
+      border: 1px solid rgba(14, 165, 233, 0.1);
       box-shadow: 0 4px 20px var(--shadow);
     }
 
@@ -365,7 +372,7 @@
 
     /* ─── SERVICES ─── */
     #services {
-      background: var(--mist);
+      background: transparent;
     }
 
     .services-grid {
@@ -376,10 +383,11 @@
     }
 
     .service-card {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
       border-radius: 10px;
       padding: 20px 18px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(14, 165, 233, 0.1);
       box-shadow: 0 2px 12px var(--shadow);
       transition: transform 0.25s, box-shadow 0.25s;
     }
@@ -573,7 +581,7 @@
 
     /* ─── GALLERY ─── */
     #gallery {
-      background: var(--mist);
+      background: transparent;
     }
 
     .gallery-grid {
@@ -623,7 +631,7 @@
 
     /* ─── CONTACT ─── */
     #contact {
-      background: var(--cream);
+      background: transparent;
     }
 
     .contact-grid {
@@ -746,7 +754,7 @@
 
     /* ─── ABOUT SPLIT ─── */
     #about {
-      background: #fff;
+      background: transparent;
     }
 
     .about-grid {
@@ -908,18 +916,21 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">🌱</div>
-        <div class="service-name">Fertilizers Guidance</div>
-        <div class="service-desc">Expert advice on fertilizer selection, application, and soil compatibility.</div>
+        <div class="service-name">Fertilizer</div>
+        <div class="service-desc">Expert advice on fertilizer Manufacturing, unit setup, quality control lab setup.
+        </div>
       </div>
       <div class="service-card">
         <div class="service-icon">🌾</div>
-        <div class="service-name">Seeds & Pesticides</div>
-        <div class="service-desc">Guidance on suitable seed varieties and safe pesticide use.</div>
+        <div class="service-name">Seed & Pesticides</div>
+        <div class="service-desc">Expert advice on seed & pesticides use for Manufacturing, unit setup, quality control
+          lab setup.</div>
       </div>
       <div class="service-card">
         <div class="service-icon">🧪</div>
-        <div class="service-name">Bio-stimulants Setup</div>
-        <div class="service-desc">Complete setup and implementation of bio-stimulant programs.</div>
+        <div class="service-name">Bio-stimulant</div>
+        <div class="service-desc">Expert advice on Bio-stimulant use for Manufacturing, unit setup, quality control lab
+          setup</div>
       </div>
       <div class="service-card">
         <div class="service-icon">📋</div>
@@ -946,7 +957,7 @@
     <h2 class="section-title">NABL Accreditation</h2>
     <p style="font-size:0.95rem; line-height:1.75; color:rgba(255,255,255,0.75); max-width:550px; margin-bottom:0;">We
       provide end-to-end guidance for laboratory accreditation under NABL standards, ensuring your facility meets every
-      benchmark.</p>
+      benchmark as per ISO/IEC 17025:2017</p>
     <div class="nabl-points">
       <div class="nabl-point">
         <div class="nabl-point-icon">📁</div>
